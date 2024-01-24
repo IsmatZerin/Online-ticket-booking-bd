@@ -1,25 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define Total_Seat 36
-#include<bits/stdc++.h>
-using namespace std;
-#define Total_Seat 36
 struct Ticket{
     string name;
     int seatnum;
 };
 struct Ticket seats[Total_Seat];
 int bookedSeat;
-void Login()
-{
-    string name;
-    int contact;
-    cout << "Enter your name:";
-    cin >> name;
-    cout << "Enter your Contact No.";
-    cin >> contact;
-    cout << "Logged in successfully." << endl;
-}
+string n1,n2,p1,p2;
 void ticketBooking()
 {
     if(bookedSeat<Total_Seat)
@@ -86,7 +74,7 @@ void cancelTicket()
     cout << "Your ticket is cenceled.\n";
 
 }
-int main()
+void system()
 {
     int choice;
     cout << "1. Book a Ticket\n2. Cancel Ticket\n4. Exit\n";
@@ -104,6 +92,55 @@ int main()
                 cancelTicket();
                 break;
             case 3:
+                exit(1);
+            default:
+                cout << "Invalid choice. Please try again.";
+        }
+    }
+}
+void Login()
+{   cout << "Please log in :" << endl;
+    cout << "Enter your name:";
+    cin >> n2;
+    cout << "Enter your Password :";
+    cin >> p2;
+    if(n==n2 && p1==p2)
+    {
+        cout << "Logged in successfully." << endl;
+        system();
+    }
+    else
+    {
+        cout << "Logged in unsuccessful. Please try again." << endl;
+        Login();
+    }
+}
+void Signup()
+{
+    cout << "Please sign up:"<< endl;
+    cout << "Enter your name:";
+    cin >> n1;
+    cout << "Enter your password:";
+    cin >> p1;
+    cout << "Signed up successfully." << endl;
+    Login();
+}
+
+int main()
+{
+    
+    while(1)
+    {
+        int choice;
+        cout << "1. Sign up\n2. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch(choice)
+        {
+            case 1:
+                Signup();
+                break;
+            case 2:
                 exit(1);
             default:
                 cout << "Invalid choice. Please try again.";
