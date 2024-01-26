@@ -15,8 +15,18 @@ void ticketBooking()
         cout << "\nEnter your name:";
         cin >> seats[bookedSeat].name;
         seats[bookedSeat].seatnum=bookedSeat+1;
-        cout << "Ticket is booked successfully. Your seat number is " << seats[bookedSeat].seatnum << endl;
-        bookedSeat++;
+        string x;
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Ticket is booked successfully. Your seat number is " << seats[bookedSeat].seatnum << endl;
+            bookedSeat++;
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
     }
 }
 int price()
@@ -54,6 +64,86 @@ int price()
     {
         cout << "Ticket Price is 590.";
     }
+    else if((origin==2 && destination==3) || (origin==3 && destination==2))
+    {
+        cout << "Ticket Price is 720.";
+    }
+    else if((origin==2 && destination==4) || (origin==4 && destination==2))
+    {
+        cout << "Ticket Price is 900.";
+    }
+    else if((origin==2 && destination==5) || (origin==5 && destination==2))
+    {
+        cout << "Ticket Price is 970.";
+    }
+    else if((origin==2 && destination==6) || (origin==6 && destination==2))
+    {
+        cout << "Ticket Price is 700.";
+    }
+    else if((origin==2 && destination==7) || (origin==7 && destination==2))
+    {
+        cout << "Ticket Price is 950.";
+    }
+    else if((origin==2 && destination==8) || (origin==8 && destination==2))
+    {
+        cout << "Ticket Price is 460.";
+    }
+    else if((origin==3 && destination==4) || (origin==4 && destination==3))
+    {
+        cout << "Ticket Price is 1200.";
+    }
+    else if((origin==3 && destination==5) || (origin==5 && destination==3))
+    {
+        cout << "Ticket Price is 1120.";
+    }
+    else if((origin==3 && destination==6) || (origin==6 && destination==3))
+    {
+        cout << "Ticket Price is 870.";
+    }
+    else if((origin==3 && destination==7) || (origin==7 && destination==3))
+    {
+        cout << "Ticket Price is 550.";
+    }
+    else if((origin==3 && destination==8) || (origin==8 && destination==3))
+    {
+        cout << "Ticket Price is 680.";
+    }
+    else if((origin==4 && destination==5) || (origin==5 && destination==4))
+    {
+        cout << "Ticket Price is 890.";
+    }
+    else if((origin==4 && destination==6) || (origin==6 && destination==4))
+    {
+        cout << "Ticket Price is 490.";
+    }
+    else if((origin==4 && destination==7) || (origin==7 && destination==4))
+    {
+        cout << "Ticket Price is 1050.";
+    }
+    else if((origin==4 && destination==8) || (origin==8 && destination==4))
+    {
+        cout << "Ticket Price is 770.";
+    }
+     else if((origin==5 && destination==6) || (origin==6 && destination==5))
+    {
+        cout << "Ticket Price is 1170.";
+    }
+    else if((origin==5 && destination==7) || (origin==7 && destination==5))
+    {
+        cout << "Ticket Price is 840.";
+    }
+    else if((origin==5 && destination==8) || (origin==8 && destination==5))
+    {
+        cout << "Ticket Price is 1000.";
+    }
+    else if((origin==6 && destination==7) || (origin==7 && destination==6))
+    {
+        cout << "Ticket Price is 620.";
+    }
+    else if((origin==7 && destination==8) || (origin==8 && destination==7))
+    {
+        cout << "Ticket Price is 730.";
+    }
     else
     {
         cout << "Invalid Choice";
@@ -70,8 +160,17 @@ void cancelTicket()
     cin >> destination;
     cout << "Enter your name:";
     cin >> name;
-    bookedSeat--;
-    cout << "Your ticket is cenceled.\n";
+    cout<< "Sure to cancel the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+           bookedSeat--;
+           cout << "Your ticket is cenceled.\n";
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not canceled." << endl;
+        }
 
 }
 void system()
@@ -104,7 +203,7 @@ void Login()
     cin >> n2;
     cout << "Enter your Password :";
     cin >> p2;
-    if(n==n2 && p1==p2)
+    if(n1==n2 && p1==p2)
     {
         cout << "Logged in successfully." << endl;
         system();
@@ -146,4 +245,5 @@ int main()
                 cout << "Invalid choice. Please try again.";
         }
     }
+    return 0;
 }
