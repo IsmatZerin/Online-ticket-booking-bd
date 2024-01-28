@@ -15,7 +15,7 @@ void ticketBooking()
         cout << "\nEnter your name:";
         cin >> seats[bookedSeat].name;
         seats[bookedSeat].seatnum=bookedSeat+1;
-        string x;
+        char x;
         cout<< "Sure to book the ticket? Press y/n" << endl;
         cin >> x;
         if(x=='Y'||x=='y')
@@ -160,6 +160,7 @@ void cancelTicket()
     cin >> destination;
     cout << "Enter your name:";
     cin >> name;
+    char x;
     cout<< "Sure to cancel the ticket? Press y/n" << endl;
         cin >> x;
         if(x=='Y'||x=='y')
@@ -197,6 +198,12 @@ void system()
         }
     }
 }
+void forgot()
+{
+    cout << "Your user-name is " << n1 << endl;
+    cout << "Your password is " << p1 << endl;
+
+}
 void Login()
 {   cout << "Please log in :" << endl;
     cout << "Enter your name:";
@@ -210,8 +217,19 @@ void Login()
     }
     else
     {
-        cout << "Logged in unsuccessful. Please try again." << endl;
-        Login();
+        cout << "Logged in unsuccessful." << endl;
+        cout << "Do you forget your user-name or password. Press y/n." << endl;
+        char x;
+        cin >> x;
+        if(x=='N' || x=='n')
+        {
+            Login();
+        }
+        else
+        {
+            forgot();
+            Login();
+        }
     }
 }
 void Signup()
