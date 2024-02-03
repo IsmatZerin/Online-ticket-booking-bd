@@ -3,24 +3,10 @@ using namespace std;
 #define Total_Seat 36
 struct node{
     int seat;
-    string path;
+    char path[50];
+    char time[10];
     struct node* next;
 };
-struct node* Head;
-struct node* temp;
-void insert(int s,string p)
-{
-    temp= Head;
-    struct node* newnode= (struct node*)malloc(sizeof(struct node));
-    newnode->seat=s;
-    newnode->path=p;
-    newnode->next=NULL;
-    while(temp->next!=NULL)
-    {
-        temp=temp->next;
-    }
-    temp->next=newnode;
-}
 int DhCtg[Total_Seat]={0};
 int DhKhl[Total_Seat]={0};
 int DhRaj[Total_Seat]={0};
@@ -79,6 +65,49 @@ int MySyl[Total_Seat]={0};
 int MyBar[Total_Seat]={0};
 
 string n1,n2,p1,p2;
+
+struct node* Head;
+void insert(int s,char p[],char t[])
+{
+    struct node* temp;
+    temp= Head;
+    struct node* newnode= (struct node*)malloc(sizeof(struct node));
+    newnode->seat=s;
+    strcpy(newnode->path,p);
+    strcpy(newnode->time,t);
+    newnode->next=NULL;
+    if(Head==NULL)
+    {
+        Head=newnode;
+    }
+    else
+    {
+        while(temp!=NULL)
+        {
+            temp=temp->next;
+        }
+        temp->next=newnode;
+    }
+}
+void viewbookedticket()
+{
+    struct node* temp;
+    temp= Head;
+    int a=1;
+    if(Head==NULL)
+    {
+        cout << "No booked ticket\n";
+    }
+    else{
+    while(temp->next!=NULL)
+    {
+        cout << "Route : " << temp->path << endl;
+        cout << "Seat No : " << temp->seat << endl;
+        cout << "Time : " << temp->time << endl << endl;
+        temp=temp->next;
+    }
+    }
+}
 void payment()
 {
     cout << "Please make payment:" << endl;
@@ -95,7 +124,7 @@ void payment()
 }
 int ticketbooking()
 {   int destination,origin;
-    cout << "Our route list:\n1.Dhaka\n2.Chittagong\n3.Khulna\n4.Rajshahi5.Rangpur\n6.Sylhet\n7.Barisal\n8.Mymensingh\n";
+    cout << "Our route list:\n1.Dhaka\n2.Chittagong\n3.Khulna\n4.Rajshahi\n5.Rangpur\n6.Sylhet\n7.Barisal\n8.Mymensingh\n";
     cout << "Enter your Origin City from the list:";
     cin >> origin;
     cout << "Enter your Destination from the list:";
@@ -116,16 +145,20 @@ int ticketbooking()
                 cout << "This ticket is already booked. Try again." << endl;
             }
             else{
-            DhCtg[i]=1;
-            insert(i,"Dhaka-Chittagong");
+                DhCtg[i]=1;
+            insert(i,"Dhaka-Chittagong","8.00");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 8.00.\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
         {
             cout << "Ticket is not booked." << endl;
         }
+    }
+    else if(origin==1 && destination==1)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
     }
     else if(origin==1 && destination==3)
     {
@@ -143,9 +176,9 @@ int ticketbooking()
             }
             else{
             DhKhl[i]=1;
-            insert(i,"Dhaka-Khulna");
+            insert(i,"Dhaka-Khulna","8.30");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 8.30.\nYour seat number is " << i << ".Thank you" << endl;
             }
     }
         else if(x=='N'||x=='n')
@@ -169,9 +202,9 @@ int ticketbooking()
             }
             else{
             DhRaj[i]=1;
-            insert(i,"Dhaka-Rajshahi");
+            insert(i,"Dhaka-Rajshahi","7.00");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 7.00.\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
@@ -195,9 +228,9 @@ int ticketbooking()
             }
             else{
             DhRng[i]=1;
-            insert(i,"Dhaka-Rangpur");
+            insert(i,"Dhaka-Rangpur","16.20");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 16.20.\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
@@ -221,9 +254,9 @@ int ticketbooking()
             }
             else{
             DhSyl[i]=1;
-            insert(i,"Dhaka-Sylhet");
+            insert(i,"Dhaka-Sylhet","13.00");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
@@ -247,9 +280,9 @@ int ticketbooking()
             }
             else{
             DhBar[i]=1;
-            insert(i,"Dhaka-Barisal");
+            insert(i,"Dhaka-Barisal","15.00");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 15.00.\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
@@ -273,9 +306,9 @@ int ticketbooking()
             }
             else{
             DhMy[i]=1;
-            insert(i,"Dhaka-Mymensingh");
+            insert(i,"Dhaka-Mymensingh","11.30");
             payment();
-            cout << "Your seat number is " << i << "Thank you" << endl;
+            cout << "Your time is 11.30.\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
         else if(x=='N'||x=='n')
@@ -284,16 +317,1308 @@ int ticketbooking()
         }
     }
     
-    else
+    else if(origin==2 && destination==1)
     {
-        cout << "Invalid Choice";
+        cout << "Ticket Price is 850.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgDh[i]=1;
+            insert(i,"Chittagong-Dhaka","11.00");
+            payment();
+            cout << "Your time is 11.00.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==2)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==2 && destination==3)
+    {
+        cout << "Ticket Price is 1400.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgKhl[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgKhl[i]=1;
+            insert(i,"Chittagong-Khulna","11.20");
+            payment();
+            cout << "Your time is 11.20.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==4)
+    {
+        cout << "Ticket Price is 1200.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgRaj[i]=1;
+            insert(i,"Chittagong-Rajshahi","13.30");
+            payment();
+            cout << "Your time is 13.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==5)
+    {
+        cout << "Ticket Price is 1330.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            DhRng[i]=1;
+            insert(i,"Chittagong-Rangpur","8.20");
+            payment();
+            cout << "Your time is 8.20.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==6)
+    {
+        cout << "Ticket Price is 550.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgSyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgSyl[i]=1;
+            insert(i,"Chittagong-Sylhet","11.50");
+            payment();
+            cout << "Your time is 11.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==7)
+    {
+        cout << "Ticket Price is 1130.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgBar[i]=1;
+            insert(i,"Chittagong-Barisal","7.00");
+            payment();
+            cout << "Your time is 7.00.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==2 && destination==8)
+    {
+        cout << "Ticket Price is 900.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(CtgMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            CtgMy[i]=1;
+            insert(i,"Chittagong-Mymensingh","12.30");
+            payment();
+            cout << "Your time is 12.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==1)
+    {
+        cout << "Ticket Price is 790.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlDh[i]=1;
+            insert(i,"Khulna-Dhaka","11.55");
+            payment();
+            cout << "Your time is 11.55.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==2)
+    {
+        cout << "Ticket Price is 1400.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlCtg[i]=1;
+            insert(i,"Khulna-Chittagong","10.30");
+            payment();
+            cout << "Your time is 10.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==3)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==3 && destination==4)
+    {
+        cout << "Ticket Price is 1150.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlRaj[i]=1;
+            insert(i,"Khulna-Rajshahi","8.30");
+            payment();
+            cout << "Your time is 8.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==5)
+    {
+        cout << "Ticket Price is 1200.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlRng[i]=1;
+            insert(i,"Khulna-Rangpur","12.00");
+            payment();
+            cout << "Your time is 12.00.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==6)
+    {
+        cout << "Ticket Price is 750.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlSyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlSyl[i]=1;
+            insert(i,"Khulna-Sylhet","9.50");
+            payment();
+            cout << "Your time is 9.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==7)
+    {
+        cout << "Ticket Price is 490.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlBar[i]=1;
+            insert(i,"Khulna-Barisal","18.00");
+            payment();
+            cout << "Your time is 18.00.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==3 && destination==8)
+    {
+        cout << "Ticket Price is 950.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(KhlMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            KhlMy[i]=1;
+            insert(i,"Khulna-Mymensingh","12.30");
+            payment();
+            cout << "Your time is 12.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==1)
+    {
+        cout << "Ticket Price is 710.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajDh[i]=1;
+            insert(i,"Rajshahi-Dhaka","10.50");
+            payment();
+            cout << "Your time is 10.50.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==2)
+    {
+        cout << "Ticket Price is 1290.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajCtg[i]=1;
+            insert(i,"Rajshahi-Chittagong","14.30");
+            payment();
+            cout << "Your time is 14.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==3)
+    {
+        cout << "Ticket Price is 1150.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajKhl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajKhl[i]=1;
+            insert(i,"Rajshahi-Khulna","9.45");
+            payment();
+            cout << "Your time is 9.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==4)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==4 && destination==5)
+    {
+        cout << "Ticket Price is 400.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajRng[i]=1;
+            insert(i,"Rajshahi-Rangpur","13.45");
+            payment();
+            cout << "Your time is 13.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==6)
+    {
+        cout << "Ticket Price is 1650.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajSyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajSyl[i]=1;
+            insert(i,"Rajshahi-Sylhet","6.50");
+            payment();
+            cout << "Your time is 6.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==7)
+    {
+        cout << "Ticket Price is 1080.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajBar[i]=1;
+            insert(i,"Rajshahi-Barisal","8.00");
+            payment();
+            cout << "Your time is 8.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==4 && destination==8)
+    {
+        cout << "Ticket Price is 500.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RajMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RajMy[i]=1;
+            insert(i,"Rajshahi-Mymensingh","13.00");
+            payment();
+            cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==1)
+    {
+        cout << "Ticket Price is 790.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngDh[i]=1;
+            insert(i,"Rangpur-Dhaka","10.50");
+            payment();
+            cout << "Your time is 10.50.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==2)
+    {
+        cout << "Ticket Price is 1300.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngCtg[i]=1;
+            insert(i,"Rangpur-Chittagong","7.30");
+            payment();
+            cout << "Your time is 7.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==3)
+    {
+        cout << "Ticket Price is 1500.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngKhl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngKhl[i]=1;
+            insert(i,"Rangpur-Khulna","7.45");
+            payment();
+            cout << "Your time is 7.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==4)
+    {
+        cout << "Ticket Price is 410.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngRaj[i]=1;
+            insert(i,"Rangpur-Rajshahi","10.45");
+            payment();
+            cout << "Your time is 10.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==5)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==5 && destination==6)
+    {
+        cout << "Ticket Price is 1650.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngSyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngSyl[i]=1;
+            insert(i,"Rangpur-Sylhet","8.50");
+            payment();
+            cout << "Your time is 8.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==7)
+    {
+        cout << "Ticket Price is 1100.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngBar[i]=1;
+            insert(i,"Rangpur-Barisal","8.00");
+            payment();
+            cout << "Your time is 8.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==5 && destination==8)
+    {
+        cout << "Ticket Price is 510.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(RngMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            RngMy[i]=1;
+            insert(i,"Rangpur-Mymensingh","13.00");
+            payment();
+            cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(origin==6 && destination==1)
+    {
+        cout << "Ticket Price is 700.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylDh[i]=1;
+            insert(i,"Sylhet-Dhaka","10.50");
+            payment();
+            cout << "Your time is 10.50.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==2)
+    {
+        cout << "Ticket Price is 650.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylCtg[i]=1;
+            insert(i,"Sylhet-Chittagong","8.30");
+            payment();
+            cout << "Your time is 8.30\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==3)
+    {
+        cout << "Ticket Price is 710.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylKhl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylKhl[i]=1;
+            insert(i,"Sylhet-Khulna","7.45");
+            payment();
+            cout << "Your time is 7.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==4)
+    {
+        cout << "Ticket Price is 1080.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylRaj[i]=1;
+            insert(i,"Sylhet-Rajshahi","10.45");
+            payment();
+            cout << "Your time is 10.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==5)
+    {
+        cout << "Ticket Price is 1400.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylRng[i]=1;
+            insert(i,"Sylhet-Rangpur","8.50");
+            payment();
+            cout << "Your time is 8.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==6)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==6 && destination==7)
+    {
+        cout << "Ticket Price is 1100.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylBar[i]=1;
+            insert(i,"Sylhet-Barisal","9.00");
+            payment();
+            cout << "Your time is 9.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==6 && destination==8)
+    {
+        cout << "Ticket Price is 850.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(SylMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            SylMy[i]=1;
+            insert(i,"Sylhet-Mymensingh","12.00");
+            payment();
+            cout << "Your time is 12.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==1)
+    {
+        cout << "Ticket Price is 700.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarDh[i]=1;
+            insert(i,"Barisal-Dhaka","10.50");
+            payment();
+            cout << "Your time is 10.50.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==2)
+    {
+        cout << "Ticket Price is 1300.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarCtg[i]=1;
+            insert(i,"Barisal-Chittagong","7.30");
+            payment();
+            cout << "Your time is 7.30.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==3)
+    {
+        cout << "Ticket Price is 450.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarKhl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarKhl[i]=1;
+            insert(i,"Barisal-Khulna","7.45");
+            payment();
+            cout << "Your time is 7.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==4)
+    {
+        cout << "Ticket Price is 1210.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarRaj[i]=1;
+            insert(i,"Barisal-Rajshahi","10.45");
+            payment();
+            cout << "Your time is 10.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==5)
+    {
+        cout << "Ticket Price is 1650.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarRng[i]=1;
+            insert(i,"Barisal-Rangpur","8.50");
+            payment();
+            cout << "Your time is 8.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==6)
+    {
+        cout << "Ticket Price is 1000.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarSyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarSyl[i]=1;
+            insert(i,"Barisal-Sylhet","8.00");
+            payment();
+            cout << "Your time is 8.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==7 && destination==7)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin==7 && destination==8)
+    {
+        cout << "Ticket Price is 950.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(BarMy[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            BarMy[i]=1;
+            insert(i,"Barisal-Mymensingh","13.00");
+            payment();
+            cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(origin==8 && destination==1)
+    {
+        cout << "Ticket Price is 500.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyDh[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyDh[i]=1;
+            insert(i,"Mymensingh-Dhaka","10.50");
+            payment();
+            cout << "Your time is 10.50.\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==2)
+    {
+        cout << "Ticket Price is 1050.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyCtg[i]=1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyCtg[i]=1;
+            insert(i,"Mymensingh-Chittagong","7.30");
+            payment();
+            cout << "Your time is 7.30\nYour seat number is " << i << ".Thank you" << endl;
+            }
+    }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==3)
+    {
+        cout << "Ticket Price is 1060.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyKhl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyKhl[i]=1;
+            insert(i,"Mymensingh-Khulna","7.45");
+            payment();
+            cout << "Your time is 7.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==4)
+    {
+        cout << "Ticket Price is 480.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyRaj[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyRaj[i]=1;
+            insert(i,"Mymensingh-Rajshahi","10.45");
+            payment();
+            cout << "Your time is 10.45\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==5)
+    {
+        cout << "Ticket Price is 490.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyRng[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyRng[i]=1;
+            insert(i,"Mymensingh-Rangpur","8.50");
+            payment();
+            cout << "Your time is 8.50\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==6)
+    {
+        cout << "Ticket Price is 1020.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MySyl[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MySyl[i]=1;
+            insert(i,"Mymensingh-Sylhet","9.00");
+            payment();
+            cout << "Your time is 9.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==7)
+    {
+        cout << "Ticket Price is 850.";
+        cout<< "Sure to book the ticket? Press y/n" << endl;
+        cin >> x;
+        if(x=='Y'||x=='y')
+        {
+            cout << "Which seat do you want to choose?(1-36)" << endl;
+            int i;
+            cin >> i;
+            if(MyBar[i]==1)
+            {
+                cout << "This ticket is already booked. Try again." << endl;
+            }
+            else{
+            MyBar[i]=1;
+            insert(i,"Mymensingh-Barisal","12.00");
+            payment();
+            cout << "Your time is 12.00\nYour seat number is " << i << ".Thank you" << endl;
+            }
+        }
+        else if(x=='N'||x=='n')
+        {
+            cout << "Ticket is not booked." << endl;
+        }
+    }
+    else if(origin==8 && destination==8)
+    {
+        cout << "Origin and destination couldn't be same.\n"<< endl;
+    }
+    else if(origin>8 || destination>8 || origin<1 || destination<1)
+    {
+        cout << "Invalid choice. Please try again.\n";
     }
 }
 
 void system()
 {
     int choice;
-    cout << "1. Book a Ticket\n2. Cancel Ticket\n3. Exit\n";
+    cout << "1. Book a Ticket\n2. View your booked ticket\n3. Exit\n";
     while(1)
     {
         cout << "Enter your choice: ";
@@ -303,6 +1628,8 @@ void system()
             case 1:
                 ticketbooking();
                 break;
+            case 2:
+                viewbookedticket();
             //case 2:
                 //cancelTicket();
                 //break;
