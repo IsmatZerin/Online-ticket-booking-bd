@@ -1075,6 +1075,7 @@ void fromRangpur(int destination)
             cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
+    }
 }
 void fromSylhet(int destination)
 {
