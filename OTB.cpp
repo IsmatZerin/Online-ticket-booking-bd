@@ -67,6 +67,14 @@ int MyBar[Total_Seat]={0};
 string n1,n2,p1,p2;
 
 struct node* Head;
+void fromDhaka(int destination);
+void fromChittagong(int destination);
+void fromKhulna(int destination);
+void fromRajshahi(int destination);
+void fromRangpur(int destination);
+void fromSylhet(int destination);
+void fromBarisal(int destination);
+void fromMymensingh(int destination);
 void insert(int s,char p[],char t[])
 {
     struct node* temp;
@@ -1649,28 +1657,28 @@ int ticketbooking()
         switch(origin)
         {
             case 1:
-            fromDhaka();
+            fromDhaka(destination);
             break;
             case 2:
-            fromChittagong();
+            fromChittagong(destination);
             break;
             case 3:
-            fromKhulna();
+            fromKhulna(destination);
             break;
             case 4:
-            fromRajshahi();
+            fromRajshahi(destination);
             break;
             case 5:
-            fromRangpur();
+            fromRangpur(destination);
             break;
             case 6:
-            fromRangpur();
+            fromRangpur(destination);
             break;
             case 7:
-            fromBarisal();
+            fromBarisal(destination);
             break;
             case 8:
-            fromMymensingh();
+            fromMymensingh(destination);
             break;
             default:
                 cout << "Invalid choice. Try again." << endl;
