@@ -122,15 +122,10 @@ void payment()
                 payment();
             }
 }
-int ticketbooking()
-{   int destination,origin;
-    cout << "Our route list:\n1.Dhaka\n2.Chittagong\n3.Khulna\n4.Rajshahi\n5.Rangpur\n6.Sylhet\n7.Barisal\n8.Mymensingh\n";
-    cout << "Enter your Origin City from the list:";
-    cin >> origin;
-    cout << "Enter your Destination from the list:";
-    cin >> destination;
+void fromDhaka(int destination)
+{
     char x;
-    if(origin==1 && destination==2)
+    if(destination==2)
     {
         cout << "Ticket Price is 850.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -156,11 +151,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==1)
+    else if(destination==1)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==1 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 750.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -186,7 +181,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 710.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -212,7 +207,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 1100.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -238,7 +233,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 680.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -264,7 +259,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 500.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -290,7 +285,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==1 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 450.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -317,7 +312,11 @@ int ticketbooking()
         }
     }
     
-    else if(origin==2 && destination==1)
+}
+void fromChittagong(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 850.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -343,11 +342,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==2)
+    else if(destination==2)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==2 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 1400.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -373,7 +372,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 1200.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -399,7 +398,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 1330.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -425,7 +424,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 550.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -451,7 +450,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 1130.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -477,7 +476,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==2 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 900.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -503,7 +502,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==1)
+}
+void fromKhulna(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 790.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -529,7 +532,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 1400.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -555,11 +558,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==3)
+    else if(destination==3)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==3 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 1150.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -585,7 +588,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 1200.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -611,7 +614,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 750.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -637,7 +640,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 490.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -663,7 +666,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==3 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 950.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -689,7 +692,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==1)
+}
+void fromRajshahi(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 710.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -715,7 +722,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 1290.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -741,7 +748,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 1150.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -767,11 +774,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==4)
+    else if(destination==4)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==4 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 400.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -797,7 +804,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 1650.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -823,7 +830,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 1080.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -849,7 +856,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==4 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 500.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -875,7 +882,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==1)
+}
+void fromRangpur(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 790.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -901,7 +912,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 1300.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -927,7 +938,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 1500.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -953,7 +964,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 410.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -979,11 +990,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==5)
+    else if(destination==5)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==5 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 1650.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1009,7 +1020,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 1100.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1035,7 +1046,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==5 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 510.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1056,7 +1067,11 @@ int ticketbooking()
             cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
-        else if(origin==6 && destination==1)
+}
+void fromSylhet(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 700.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1082,7 +1097,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 650.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1108,7 +1123,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 710.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1134,7 +1149,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 1080.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1160,7 +1175,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 1400.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1186,11 +1201,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==6)
+    else if(destination==6)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==6 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 1100.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1216,7 +1231,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==6 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 850.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1242,7 +1257,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==1)
+}
+void fromBarisal(int destination)
+{
+    char x;
+    if(destination==1)
     {
         cout << "Ticket Price is 700.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1268,7 +1287,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 1300.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1294,7 +1313,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 450.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1320,7 +1339,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 1210.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1346,7 +1365,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 1650.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1372,7 +1391,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 1000.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1398,11 +1417,11 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==7 && destination==7)
+    else if(destination==7)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin==7 && destination==8)
+    else if(destination==8)
     {
         cout << "Ticket Price is 950.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1423,7 +1442,11 @@ int ticketbooking()
             cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
-        else if(origin==8 && destination==1)
+}
+void fromMymensingh(int destination)
+{
+    char x;
+    if (destination==1)
     {
         cout << "Ticket Price is 500.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1449,7 +1472,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==2)
+    else if(destination==2)
     {
         cout << "Ticket Price is 1050.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1475,7 +1498,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==3)
+    else if(destination==3)
     {
         cout << "Ticket Price is 1060.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1501,7 +1524,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==4)
+    else if(destination==4)
     {
         cout << "Ticket Price is 480.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1527,7 +1550,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==5)
+    else if(destination==5)
     {
         cout << "Ticket Price is 490.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1553,7 +1576,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==6)
+    else if(destination==6)
     {
         cout << "Ticket Price is 1020.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1579,7 +1602,7 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==7)
+    else if(destination==7)
     {
         cout << "Ticket Price is 850.";
         cout<< "Sure to book the ticket? Press y/n" << endl;
@@ -1605,13 +1628,53 @@ int ticketbooking()
             cout << "Ticket is not booked." << endl;
         }
     }
-    else if(origin==8 && destination==8)
+    else if(destination==8)
     {
         cout << "Origin and destination couldn't be same.\n"<< endl;
     }
-    else if(origin>8 || destination>8 || origin<1 || destination<1)
+}
+int ticketbooking()
+{   int destination,origin;
+    cout << "Our route list:\n1.Dhaka\n2.Chittagong\n3.Khulna\n4.Rajshahi\n5.Rangpur\n6.Sylhet\n7.Barisal\n8.Mymensingh\n";
+    cout << "Enter your Origin City from the list:";
+    cin >> origin;
+    cout << "Enter your Destination from the list:";
+    cin >> destination;
+    if(origin>8 || destination>8 || origin<1 || destination<1)
     {
         cout << "Invalid choice. Please try again.\n";
+    }
+    else
+    {
+        switch(origin)
+        {
+            case 1:
+            fromDhaka();
+            break;
+            case 2:
+            fromChittagong();
+            break;
+            case 3:
+            fromKhulna();
+            break;
+            case 4:
+            fromRajshahi();
+            break;
+            case 5:
+            fromRangpur();
+            break;
+            case 6:
+            fromRangpur();
+            break;
+            case 7:
+            fromBarisal();
+            break;
+            case 8:
+            fromMymensingh();
+            break;
+            default:
+                cout << "Invalid choice. Try again." << endl;
+        }
     }
 }
 
