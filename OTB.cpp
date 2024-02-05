@@ -109,10 +109,11 @@ void viewbookedticket()
     else{
     while(temp!=NULL)
     {
-        cout << "Route : " << temp->path << endl;
-        cout << "Seat No : " << temp->seat << endl;
-        cout << "Time : " << temp->time << endl << endl;
+        cout << a << ".Route : " << temp->path << endl;
+        cout << " Seat No : " << temp->seat << endl;
+        cout << " Time : " << temp->time << endl << endl;
         temp=temp->next;
+        a++;
     }
     }
 }
@@ -1687,13 +1688,39 @@ int ticketbooking()
         }
     }
 }
-
+void cancelTicket()
+{
+    if(Head==NULL)
+    {
+        cout << "\nNo tickets for cancel.\n";
+    }
+    else{
+    cout << "\nYour booked tickets are \n";
+    viewbookedticket();
+    cout << "Which ticket do you want to cancel?";
+    int b;
+    cin >> b;
+    struct node* temp=Head;
+    if(b==1)
+    {
+        Head=Head->next;
+    }
+    else{
+    for(int i=1;i<b-1;i++)
+    {
+        temp=temp->next;
+    }
+    temp->next=temp->next->next;
+    }
+    cout << "Ticket cancel is successful\n";
+    }
+}
 void system()
 {
     int choice;
     while(3)
     {
-        cout << "1. Book a Ticket\n2. View your booked ticket\n3. Exit\n";
+        cout << "\n1. Book a Ticket\n2. View your booked ticket\n3. Cancel Ticket\n4. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         switch(choice)
@@ -1705,6 +1732,9 @@ void system()
                 viewbookedticket();
                 break;
             case 3:
+                cancelTicket();
+                break;
+            case 4:
                 exit(1);
             default:
                 cout << "Invalid choice. Please try again.";
