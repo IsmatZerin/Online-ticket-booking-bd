@@ -90,7 +90,7 @@ void insert(int s,char p[],char t[])
     }
     else
     {
-        while(temp!=NULL)
+        while(temp->next!=NULL)
         {
             temp=temp->next;
         }
@@ -107,7 +107,7 @@ void viewbookedticket()
         cout << "No booked ticket\n";
     }
     else{
-    while(temp->next!=NULL)
+    while(temp!=NULL)
     {
         cout << "Route : " << temp->path << endl;
         cout << "Seat No : " << temp->seat << endl;
@@ -1451,6 +1451,7 @@ void fromBarisal(int destination)
             cout << "Your time is 13.00\nYour seat number is " << i << ".Thank you" << endl;
             }
         }
+    }
 }
 void fromMymensingh(int destination)
 {
@@ -1690,9 +1691,9 @@ int ticketbooking()
 void system()
 {
     int choice;
-    cout << "1. Book a Ticket\n2. View your booked ticket\n3. Exit\n";
-    while(1)
+    while(3)
     {
+        cout << "1. Book a Ticket\n2. View your booked ticket\n3. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         switch(choice)
@@ -1702,9 +1703,7 @@ void system()
                 break;
             case 2:
                 viewbookedticket();
-            //case 2:
-                //cancelTicket();
-                //break;
+                break;
             case 3:
                 exit(1);
             default:
